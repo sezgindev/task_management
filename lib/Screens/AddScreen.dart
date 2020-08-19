@@ -33,8 +33,8 @@ class _AddScreenState extends State<AddScreen> {
             child: Text("dfg"),
             onPressed: () {
 
-              cnt.addDaily(nameController.text,descriptionController.text);
-              cnt.getDaily();
+              cnt.addWeekly();
+              cnt.getWeekly();
             },
           ),
         ],

@@ -23,6 +23,7 @@ dependencies:
   shared_preferences: ^0.5.8
   rflutter_alert: ^1.0.3
   table_calendar: ^2.2.3
+  flutter_datetime_picker: ^1.4.0
 
 dev_dependencies:
   flutter_test:

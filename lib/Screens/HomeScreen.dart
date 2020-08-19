@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:task_management/Screens/Dropdown.dart';
+import 'package:task_management/Controller/TaskController.dart';
+import 'package:task_management/Screens/MonthlyScreen.dart';
+import 'package:task_management/Screens/WeekDropdown.dart';
+import 'package:task_management/Screens/WeeklyListview.dart';
+import 'package:task_management/Screens/WeeklyScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,8 +12,10 @@ class HomeScreen extends StatefulWidget {
   static const String id = "HomeScreen";
 }
 
+
 String dropdownValue = 'One';
 String dropdownValue2 = '1.Hafta';
+
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -17,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(
@@ -56,64 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           body: TabBarView(
             children: [
-              Icon(Icons.directions_car),
-              Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: FloatingActionButton(
-                        onPressed: () {
-                          //Navigator.pushNamed(context, AddScreen.id);
-                          Alert(
-                            context: context,
-                            type: AlertType.success,
-                            title: "Emin Misiniz?",
-                            desc:"Haftalık görev eklemesi yapınız",
-                            style: AlertStyle(
-                              titleStyle: TextStyle(
-                                color: Colors.white,
-                              ),
-                              descStyle: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            content: Column(
-                              children: [
-                                TextField(
-                                  decoration: InputDecoration(
-                                    icon: Icon(Icons.title),
-                                    labelText: 'Title',
-                                  ),
-                                ),
-                                TextField(
-                                  maxLines: 2,
-                                  decoration: InputDecoration(
-                                    icon: Icon(Icons.description),
-                                    labelText: 'Description',
-                                  ),
-                                ),
-                                Dropdown(),
-                              ],
-                            ),
-                            buttons: [
-                              DialogButton(
-                                child: Text(
-                                  "Ekle",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                                color: Color.fromRGBO(0, 179, 134, 1.0),
-                              ),
-                            ],
-                          ).show();
-                        },
-                        child: Icon(Icons.add),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Icon(Icons.directions_transit),
+              Icon(Icons.access_alarm),
+              WeeklyScreen(),
+              MonthlyScreen(),
             ],
           ),
         ),
