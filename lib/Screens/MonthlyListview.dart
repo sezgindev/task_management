@@ -42,91 +42,111 @@ class _MonthlyListviewState extends State<MonthlyListview> {
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: EdgeInsets.only(bottom: height * 0.04),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius:
-                          new BorderRadius.all(const Radius.circular(20.0)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.white,
-                          spreadRadius: 2,
-                          blurRadius: 1,
-                          offset: Offset(0, 3),
-                        )
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 5.0),
-                      child: ListTile(
-                        leading: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: new Text(
-                            "${monthlyMonth.elementAt(index)}",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
-                        title: Padding(
-                          padding: const EdgeInsets.only(bottom: 10.0),
-                          child: Container(
+                  child: InkWell(
+                    onTap: (){
+                      Alert(
+                          context: context,
+                          type: AlertType.success,
+                          title: "${monthlyTitle.elementAt(index)}",
+                          desc: "${monthlyDescription.elementAt(index)}" +
+                              "\n" + "\n"+
+                              " ${monthlyMonth.elementAt(index)}" ,
+
+                          buttons: [
+                            DialogButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, HomeScreen.id);
+                              },
+                              child: Text("Geri"),
+                            ),
+                          ]).show();
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            new BorderRadius.all(const Radius.circular(20.0)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white,
+                            spreadRadius: 2,
+                            blurRadius: 1,
+                            offset: Offset(0, 3),
+                          )
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: ListTile(
+                          leading: Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: new Text(
-                              "${monthlyTitle.elementAt(index)}",
+                              "${monthlyMonth.elementAt(index)}",
                               textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                          title: Padding(
+                            padding: const EdgeInsets.only(bottom: 10.0),
+                            child: Container(
+                              child: new Text(
+                                "${monthlyTitle.elementAt(index)}",
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          subtitle: Container(
+                            child: new Text(
+                              "${monthlyDescription.elementAt(index)}",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 15),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        ),
-                        subtitle: Container(
-                          child: new Text(
-                            "${monthlyDescription.elementAt(index)}",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 15),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        trailing: Wrap(
-                          spacing: 12, // space between two icons
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(
-                                Icons.cancel,
-                                color: Colors.red,
-                                size: 40,
+                          trailing: Wrap(
+                            spacing: 12, // space between two icons
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(
+                                  Icons.cancel,
+                                  color: Colors.red,
+                                  size: 40,
+                                ),
+                                onPressed: () {
+                                  Alert(
+                                      context: context,
+                                      type: AlertType.success,
+                                      title: "Emin Misiniz?",
+                                      desc: "Silmek istediğinize emin misiniz?",
+                                      buttons: [
+                                        DialogButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              monthlyTitleList.removeAt(index);
+                                              monthlyDescList.removeAt(index);
+                                              monthlyMonthList.removeAt(index);
+                                              a.addMonthly();
+                                              a.getMonthly();
+                                              print("zxvxcb");
+                                              Navigator.pushNamed(
+                                                  context, HomeScreen.id);
+                                            });
+                                          },
+                                          child: Text("Evet"),
+                                        ),
+                                        DialogButton(
+                                          child: Text("Hayır"),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        )
+                                      ]).show();
+                                },
                               ),
-                              onPressed: () {
-                                Alert(
-                                    context: context,
-                                    type: AlertType.success,
-                                    title: "Emin Misiniz?",
-                                    desc: "Silmek istediğinize emin misiniz?",
-                                    buttons: [
-                                      DialogButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            monthlyTitleList.removeAt(index);
-                                            monthlyDescList.removeAt(index);
-                                            monthlyMonthList.removeAt(index);
-                                            a.addMonthly();
-                                            a.getMonthly();
-                                            print("zxvxcb");
-                                            Navigator.pushNamed(
-                                                context, HomeScreen.id);
-                                          });
-                                        },
-                                        child: Text("Evet"),
-                                      ),
-                                      DialogButton(
-                                        child: Text("Hayır"),
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      )
-                                    ]).show();
-                              },
-                            ),
-                            // icon-1
-                            // icon-2
-                          ],
+                              // icon-1
+                              // icon-2
+                            ],
+                          ),
                         ),
                       ),
                     ),
