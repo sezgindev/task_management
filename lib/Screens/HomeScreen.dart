@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:task_management/Controller/TaskController.dart';
+import 'package:task_management/Screens/DailyScreen.dart';
 import 'package:task_management/Screens/MonthlyScreen.dart';
 import 'package:task_management/Screens/WeekDropdown.dart';
 import 'package:task_management/Screens/WeeklyListview.dart';
@@ -40,10 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white,
                           fontSize: 16.0,
                         )),
-                    background: Image.network(
-                      "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
-                      fit: BoxFit.cover,
-                    )),
+                    background: Image(image: AssetImage("images/bgimage.jpg"),fit: BoxFit.cover,)
+
+                ),
               ),
               SliverPersistentHeader(
                 delegate: _SliverAppBarDelegate(
@@ -63,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           body: TabBarView(
             children: [
-              Icon(Icons.access_alarm),
+              DailyScreen(),
               WeeklyScreen(),
               MonthlyScreen(),
             ],

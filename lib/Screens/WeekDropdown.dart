@@ -15,6 +15,8 @@ class _DropdownState extends State<Dropdown> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    weeklyControllerMonth.text=dropdownValue;
+    weeklyControllerMonth.text=dropdownValue2;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

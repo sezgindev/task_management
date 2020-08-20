@@ -40,7 +40,7 @@ class _MonthlyDropdownState extends State<MonthlyDropdown> {
             'Şubat',
             'Mart',
             'Nisan',
-            'Mayıss',
+            'Mayı s',
             'Haziran',
             'Temmuz',
             'Ağustos',

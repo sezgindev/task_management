@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:task_management/Screens/AddScreen.dart';
+
 import 'package:task_management/Screens/HomeScreen.dart';
 
 
@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: HomeScreen.id, //ilk açılacak ekran
       routes: {
         HomeScreen.id: (context) => HomeScreen(),
-        AddScreen.id: (context) => AddScreen(),
+
       },
     );
   }
